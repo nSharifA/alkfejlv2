@@ -1,5 +1,7 @@
 package alkfejl.cinema.cinema.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -25,7 +27,11 @@ public class User {
     private String password;
 
     private String name;
-
+    
+    private Date birthday;
+    
+    private String email;
+    
     @Enumerated(EnumType.STRING)
     private Role role;
 
