@@ -1,13 +1,16 @@
 package alkfejl.cinema.cinema.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -31,6 +34,8 @@ public class User {
     private Date birthday;
     
     private String email;
+    
+    
     
     @Enumerated(EnumType.STRING)
     private Role role;
