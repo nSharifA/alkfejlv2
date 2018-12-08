@@ -9,5 +9,5 @@ import alkfejl.cinema.cinema.model.Movie;
 
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
-	//public Optional<Movie> findByName(String name);
+	public Optional<Movie> findById(Integer id);
 }
