@@ -16,10 +16,10 @@ import alkfejl.cinema.cinema.repository.MovieRepository;
 public class MovieController {
 	@Autowired
     private MovieRepository movierRepository;
-
+	/*
     @GetMapping("/{name}")
     @Secured({ "ROLE_USER" })
     public ResponseEntity<Movie> getAll(@PathVariable String name) {
         return  ResponseEntity.ok(movierRepository.findByName(name).get());
-    }
+    }*/
 }
