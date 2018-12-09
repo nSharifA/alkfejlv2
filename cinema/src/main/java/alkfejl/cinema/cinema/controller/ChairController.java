@@ -14,50 +14,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import alkfejl.cinema.cinema.model.Movie;
-import alkfejl.cinema.cinema.repository.MovieRepository;
+import alkfejl.cinema.cinema.model.Chair;
+import alkfejl.cinema.cinema.repository.ChairRepository;
 
 @RestController
-@RequestMapping("/movie")
-public class MovieController {
-
+@RequestMapping("/chair")
+public class ChairController {
 	@Autowired
-	private MovieRepository movierRepository;
-
+	private ChairRepository chairRepository;
+	
 	@GetMapping("/{id}")
 	@Secured({ "ROLE_USER" })
-	public ResponseEntity<Movie> getByid ( @PathVariable Integer id ) {
-		return ResponseEntity.ok(movierRepository.findById(id).get());
+	public ResponseEntity<Chair> getByid ( @PathVariable Integer id ) {
+		return ResponseEntity.ok(chairRepository.findById(id).get());
 	}
-
+	
 	@GetMapping("")
 	@Secured({ "ROLE_USER" })
-	public ResponseEntity<List<Movie>> getAll () {
-		return ResponseEntity.ok(movierRepository.findAll());
+	public ResponseEntity<List<Chair>> getAll () {
+		return ResponseEntity.ok(chairRepository.findAll());
 	}
-
+	
 	@DeleteMapping("")
 	@Secured({ "ROLE_ADMIN" })
-	public ResponseEntity<List<Movie>> deleteMovie( @PathVariable Integer id ) {
+	public ResponseEntity<List<Chair>> deleteReservation( @PathVariable Integer id ) {
 
 		try {
-			movierRepository.deleteById(id);
+			chairRepository.deleteById(id);
 			return ResponseEntity.noContent().build();
 		} catch (Exception e) {
 			return ResponseEntity.notFound().build();
 		}
 
 	}
+	
 	@PostMapping
 	@Secured({ "ROLE_ADMIN" })
-	public ResponseEntity<Movie> createMovie ( @RequestBody Movie movie ) {
+	public ResponseEntity<Chair> createProjection ( @RequestBody Chair chair ) {
 
-		return ResponseEntity.ok(movierRepository.save(movie));
+		return ResponseEntity.ok(chairRepository.save(chair));
 	}
+	
 	@PutMapping
 	@Secured({ "ROLE_ADMIN" })
-	public ResponseEntity<Movie> updateMovie ( @RequestBody Movie movie ) {
+	public ResponseEntity<Chair> updateProjection ( @RequestBody Chair chair ) {
 
-		return ResponseEntity.ok(movierRepository.save(movie));
+		return ResponseEntity.ok(chairRepository.save(chair));
 	}
 }
