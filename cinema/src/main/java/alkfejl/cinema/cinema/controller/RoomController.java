@@ -30,7 +30,7 @@ public class RoomController {
 	}
 	
 	@GetMapping("")
-	@Secured({ "ROLE_ADMIN" })
+	//@Secured({ "ROLE_ADMIN" })
 	public ResponseEntity<List<Room>> getAll () {
 		return ResponseEntity.ok(RoomRepository.findAll());
 	}

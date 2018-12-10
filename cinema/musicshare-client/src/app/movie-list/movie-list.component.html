@@ -5,13 +5,15 @@
    
           <h2 class="col-12">Lists</h2>
          
-          <ul>
-            <li *ngFor="let movie of movies">
-              {{ movie.director }}
-            </li>
-          </ul>
-         
-      
+          <table id ="table">
+            <tr *ngFor="let movie of movies; let i = index" (click)="setSelected(i)" >
+                <td>{{ movie.id }}</td>
+                <td>{{ movie.name }}</td>
+              <td>{{ movie.mainActors }}</td>
+              <td>{{ movie.director }}</td>
+            </tr>
+          </table>
+     
       </div>
     </div>
   </div>

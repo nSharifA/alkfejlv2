@@ -4,6 +4,7 @@ import { Playlist } from '../model/Playlist';
 import { Movie } from '../model/movie';
 import { CinemaService } from '../cinema.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -11,26 +12,31 @@ import { Observable } from 'rxjs';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovielistListComponent
-  implements OnInit, OnDestroy {
+  implements OnInit {
 
   submitted: boolean = false;
-
-  private movies: Movie[] = [];
-
+  selectedID:number;
+  private movies: Movie[];
+  private selectedMovie:Movie;
 
   constructor(
-    public cinemaService: CinemaService
+    public cinemaService: CinemaService, private router: Router
   ) { }
 
   ngOnInit() {
-    this.cinemaService.allMovies() .subscribe((movie: Movie[]) => { movie.forEach(element => {
-      console.log(element.name);
-     // this.movies.push(element);
-    });});
+    this.cinemaService.allMovies()
+    .subscribe( data => {
+      this.movies = data;
+    });
   }
 
-  ngOnDestroy() {
-  }
-
+  setSelected(id:number){
+    this.selectedID=id;
+    this.cinemaService.getById(id+1) .subscribe( data => {
+      this.selectedMovie = data;
+      console.log("kivalasztott film rendezoje: "+ this.selectedMovie.director);
+    });
+   
+  } 
 
 }

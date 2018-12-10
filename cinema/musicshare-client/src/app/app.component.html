@@ -3,11 +3,11 @@
     <mat-icon>home</mat-icon>
     MusicShare
   </button>
-  <div *ngIf="authService.isLoggedIn">
+  <div >
     <button mat-button routerLink="/reservation">Foglalás</button>
     <!--button mat-button href="/playlists/add">Create playlist</button-->
     <button mat-button routerLink="/projection">Vetitések</button>
-   
+    <button mat-button routerLink="/movie">filmek</button>
     <button mat-button (click)="logout()">Logout</button>
   </div>
   <div *ngIf="!authService.isLoggedIn">

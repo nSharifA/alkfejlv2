@@ -1,1 +1,20 @@
-Hello ez itt a foglalás
+
+<div class="container">
+        <div class="row">
+          <div class="col">
+       
+              <h2 class="col-12">Lists</h2>
+             
+              <table id ="table">
+                <tr *ngFor="let re of reservation; let i = index" (click)="setSelected(i)" [class.active]="i == selectedRow">">
+                    <td>{{ re.id }}</td>
+                    
+                  <td>{{ re.row }}</td>
+                  <td>{{ re.cloumn }}</td>
+                </tr>
+              </table>
+          
+          </div>
+        </div>
+      </div>Hello ez itt a foglalás
+     
