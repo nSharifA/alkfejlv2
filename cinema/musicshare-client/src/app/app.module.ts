@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { MovielistListComponent } from './movie-list/movie-list.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ProjectionComponent } from './projection/projection.component';
+import { CinemaService } from './cinema.service';
+import { Movie } from './model/movie';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { ProjectionComponent } from './projection/projection.component';
     PlaylistFilterComponent,
     SongListComponent,
     LoginComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ import { ProjectionComponent } from './projection/projection.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [PlaylistService],
+  providers: [PlaylistService,CinemaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

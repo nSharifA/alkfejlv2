@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlaylistService } from '../playlist.service';
 import { Playlist } from '../model/Playlist';
+import { Movie } from '../model/movie';
+import { CinemaService } from '../cinema.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movie-list',
@@ -11,23 +14,23 @@ export class MovielistListComponent
   implements OnInit, OnDestroy {
 
   submitted: boolean = false;
-  playlistItems: Playlist[];
+
+  private movies: Movie[] = [];
+
 
   constructor(
-    public playlistService: PlaylistService
+    public cinemaService: CinemaService
   ) { }
 
   ngOnInit() {
-   
+    this.cinemaService.allMovies() .subscribe((movie: Movie[]) => { movie.forEach(element => {
+      console.log(element.name);
+     // this.movies.push(element);
+    });});
   }
 
   ngOnDestroy() {
   }
 
-  filter(filterText: string) {
-    this.playlistItems = this.playlistService
-      .filter(filterText);
-    this.submitted = true;
-  }
 
 }
