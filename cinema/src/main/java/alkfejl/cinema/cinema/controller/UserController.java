@@ -28,7 +28,7 @@ public class UserController {
 	    private AuthenticatedUser authenticatedUser;
 
 	    @GetMapping("")
-	    @Secured({ "ROLE_USER" })
+	    //@Secured({ "ROLE_USER" })
 	    public Iterable<User> getAll() {
 	        return userRepository.findAll();
 	    }

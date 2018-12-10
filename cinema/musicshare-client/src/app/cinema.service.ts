@@ -4,6 +4,7 @@ import { Playlist } from './model/Playlist';
 import { Song } from './model/Song';
 import { Movie } from './model/movie';
 import { Observable } from 'rxjs';
+import { Reservation } from './model/reservation';
 export const httpOptions = {
     headers: new HttpHeaders({
         'Access-Control-Request-Method': 'GET',
@@ -14,47 +15,19 @@ export const httpOptions = {
 export class CinemaService {
 
     movies:Movie[] = [];
+    movie:Movie;
 
   constructor(
     private httpClient: HttpClient
   ) { }
-/*
-  getPlaylist(playlistId: number): Promise<Playlist> {
-    const playlist = this.playlistItems.find(
-      playlist => playlist.id === playlistId
-    );
-    if (playlist) {
-      return Promise.resolve(playlist);
-    } else {
-      return this.httpClient
-        .get<Playlist>(`/api/playlists/${playlistId}`)
-        .toPromise()
-        .then(playlist => { return playlist });
-    }
-  }
-
-  filter(filterText: string): Playlist[] {
-    const filteredPlaylistItems: Playlist[] = [];
-    for (let playlistItem of this.playlistItems) {
-
-      if (playlistItem.name.startsWith(filterText)) {
-
-        filteredPlaylistItems.push(playlistItem);
-
+      public getById(id:number){
+        return this.httpClient.get<Movie>('http://localhost:8080/movie/' + id);
       }
-
-    }
-    return filteredPlaylistItems;
-  }
-
-
-async allMovies()  {
-    return await this.httpClient.get<Movie[]>('/api/movie').then(val =>this.movies = val );
-      
+      public allMovies(){
+        return this.httpClient.get<Movie[]>('http://localhost:8080/movie/all');
       }
-*/
-      public allMovies(): Observable<Movie[]> {
-        return this.httpClient.get<Movie[]>('/api/movie/all');
+      public getAllReservation(){
+        return this.httpClient.get<Reservation[]>('http://localhost:8080/reservation');
       }
      
 }

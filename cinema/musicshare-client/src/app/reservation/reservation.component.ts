@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Playlist } from '../model/Playlist';
+import { CinemaService } from '../cinema.service';
+import { Reservation } from '../model/reservation';
 
 @Component({
   selector: 'app-reservation-list',
@@ -11,23 +13,24 @@ export class ReservationComponent
   implements OnInit, OnDestroy {
 
   submitted: boolean = false;
-  playlistItems: Playlist[];
-
+  reservation: Reservation[];
+  selectedID:number;
   constructor(
-  
+    public cinemaService: CinemaService
   ) { }
 
   ngOnInit() {
-    
+    this.cinemaService.getAllReservation().subscribe( data => {
+      this.reservation = data;
+    });
   }
 
   ngOnDestroy() {
   }
 
-  filter(filterText: string) {
-   /* this.playlistItems = this.playlistService
-      .filter(filterText);
-    this.submitted = true;*/
+  setSelected(id:number){
+    this.selectedID=id;
+    console.log("a kivalasztott sor a :"+this.selectedID);
   }
-
+  
 }
