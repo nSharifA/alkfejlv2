@@ -1,16 +1,12 @@
 package alkfejl.cinema.cinema.model;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -24,11 +20,16 @@ public class User {
     private Integer id;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Column(name = "user_name")
     private String userName;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
-
+    
+    private String name;
+    
+    private String email;
+    
     public Integer getId() {
 		return id;
 	}
@@ -61,13 +62,7 @@ public class User {
 		this.name = name;
 	}
 
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
+	
 
 	public String getEmail() {
 		return email;
@@ -85,11 +80,7 @@ public class User {
 		this.role = role;
 	}
 
-	private String name;
-    
-    private Date birthday;
-    
-    private String email;
+	
     
     
     

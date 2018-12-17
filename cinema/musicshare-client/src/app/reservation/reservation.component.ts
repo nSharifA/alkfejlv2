@@ -13,7 +13,7 @@ export class ReservationComponent
   implements OnInit, OnDestroy {
 
   submitted: boolean = false;
-  reservation: Reservation[];
+  reservationList: Reservation[];
   selectedID:number;
   constructor(
     public cinemaService: CinemaService
@@ -21,7 +21,7 @@ export class ReservationComponent
 
   ngOnInit() {
     this.cinemaService.getAllReservation().subscribe( data => {
-      this.reservation = data;
+      this.reservationList = data;
     });
   }
 
@@ -30,7 +30,7 @@ export class ReservationComponent
 
   setSelected(id:number){
     this.selectedID=id;
-    console.log("a kivalasztott sor a :"+this.selectedID);
+    
   }
   
 }

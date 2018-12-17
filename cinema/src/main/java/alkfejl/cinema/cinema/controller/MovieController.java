@@ -34,7 +34,7 @@ public class MovieController {
 	}
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/all")
-	//@Secured({ "ROLE_USER" }),
+	@Secured({ "ROLE_USER" })
 	@Transactional
 	public ResponseEntity<Iterable<Movie>> getAll () {
 		return ResponseEntity.ok(movierRepository.findAll());

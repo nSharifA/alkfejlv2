@@ -2,16 +2,19 @@
 <div class="container">
         <div class="row">
           <div class="col">
-       
-              <h2 class="col-12">Lists</h2>
-             
               <table id ="table">
-                <tr *ngFor="let re of reservation; let i = index" (click)="setSelected(i)" [class.active]="i == selectedRow">">
+                <tr>
+                  <th>foglalas azonosito</th>
+                  <th>szék sora</th>
+                  <th>szék oszlopa</th>
+                </tr>
+                <!-->tr *ngFor="let re of reservationList; let i = index" (click)="setSelected(i)" >
                     <td>{{ re.id }}</td>
                     
-                  <td>{{ re.row }}</td>
-                  <td>{{ re.cloumn }}</td>
-                </tr>
+                 
+                  <td  *ngFor="let re of  re.chair">{{re.cloumn }}</td>
+                  <td  *ngFor="let re of  re.chair">{{re.row }}</td>
+                </tr-->
               </table>
           
           </div>

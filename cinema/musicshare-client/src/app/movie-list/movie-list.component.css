@@ -9,3 +9,6 @@ table, th , td {
   table tr:nth-child(even) {
     background-color: #ffffff;
   }
+#table2{
+  margin : 150px;
+}
