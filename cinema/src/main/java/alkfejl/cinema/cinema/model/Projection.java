@@ -1,6 +1,11 @@
 package alkfejl.cinema.cinema.model;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,7 +31,33 @@ public class Projection {
             fetch = FetchType.LAZY)
 	private Reservation reservation;
 	
+	@JsonBackReference
+	@OneToOne
+	@JoinColumn(name = "room")
+	private Room room;
 	
+	@JsonManagedReference
+	@OneToOne(mappedBy = "projection", cascade = CascadeType.ALL, 
+            fetch = FetchType.LAZY)
+	private Movie movie;
+	
+	
+	private Timestamp  start;
+	
+	private Timestamp  endt;
+	
+	public Timestamp getStart() {
+		return start;
+	}
+	public void setStart(Timestamp start) {
+		this.start = start;
+	}
+	public Timestamp getEndt() {
+		return endt;
+	}
+	public void setEndt(Timestamp endt) {
+		this.endt = endt;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -51,13 +82,5 @@ public class Projection {
 	public void setMovie(Movie movie) {
 		this.movie = movie;
 	}
-	@JsonBackReference
-	@OneToOne
-	@JoinColumn(name = "room")
-	private Room room;
 	
-	@JsonManagedReference
-	@OneToOne(mappedBy = "projection", cascade = CascadeType.ALL, 
-            fetch = FetchType.LAZY)
-	private Movie movie;
 }

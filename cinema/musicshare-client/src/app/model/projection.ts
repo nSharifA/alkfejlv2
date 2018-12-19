@@ -3,8 +3,9 @@ import { Room } from "./Room";
 import { Reservation } from "./reservation";
 
 export class Projection {
+    endt:number;
     id: number;
-    reservation:Reservation;
-    room: Room;
     movie: Movie;
+    start:number;
+  
 }

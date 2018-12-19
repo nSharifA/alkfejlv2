@@ -1,1 +1,38 @@
-hello ez itt a vetittés oldal
+
+<ng-container>
+    <table mat-table id ="table">
+        <tr>
+            <th>Film neve</th>
+            <th>Főszereplő</th>
+            <th>Rendező</th>
+            <th>Film kezdete</th>
+            <th>Film vége</th>
+          </tr>
+        <tr *ngFor="let pro of projections; let i = index" (click)="setSelected(i)" >
+            <td>{{ pro.movie.name }}</td>
+          <td>{{ pro.movie.mainActors }}</td>
+          <td>{{ pro.movie.director }}</td>
+          <td>{{ pro.start  | date: 'EEEE, MMMM d, y, h:mm:ss a'}}</td>
+          <td>{{ pro.endt |  date: 'EEEE, MMMM d, y, h:mm:ss a'}}</td>
+        </tr>
+    </table>
+    </ng-container>
+  
+    <ng-container *ngIf="selected === true">
+    <table mat-table id="table2"  >
+        <tr>
+            <th>Film neve</th>
+            <th>Főszereplő</th>
+            <th>Rendező</th>
+            <th>Film kezdete</th>
+            <th>Film vége</th>
+          </tr>
+        <tr >
+            <td>{{ selectedProj.movie.name }}</td>
+          <td>{{ selectedProj.movie.mainActors }}</td>
+          <td>{{ selectedProj.movie.director }}</td>
+          <td>{{ selectedProj.start  | date: 'EEEE, MMMM d, y, h:mm:ss a'}}</td>
+          <td>{{ selectedProj.endt |  date: 'EEEE, MMMM d, y, h:mm:ss a'}}</td>
+        </tr>
+    </table>
+  </ng-container >

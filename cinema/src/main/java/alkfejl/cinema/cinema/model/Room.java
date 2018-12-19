@@ -68,9 +68,11 @@ public class Room {
 
 	@Column(name = "head_count")
 	private int headCount;
+	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "room")
 	private List<Chair> chair;
+	
 	@JsonManagedReference
 	@OneToOne(mappedBy = "room", cascade = CascadeType.ALL, 
             fetch = FetchType.LAZY)

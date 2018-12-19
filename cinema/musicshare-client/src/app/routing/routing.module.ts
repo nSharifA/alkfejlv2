@@ -21,31 +21,34 @@ const routes: Routes = [
   {
     path:'movie',
     component:MovielistListComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard,RoleGuard],
     data:{
       expectedRole:'ROLE_USER'
     }
-  },
-  {
-    path: 'registration',
-    component: RegistrationComponent,
   },
   {
     path: 'reservation',
     component: ReservationComponent,
     canActivate: [AuthGuard,RoleGuard],
     data: { 
-      expectedRole: 'ROLE_ADMIN'
+      expectedRole:'ROLE_USER'
     } 
   },
   {
     path: 'projection',
     component: ProjectionComponent,
     canActivate: [AuthGuard,RoleGuard],
+    data: { 
+      expectedRole:'ROLE_USER'
+    } 
   },
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'registration',
+    component: RegistrationComponent,
   },
   
 ];

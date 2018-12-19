@@ -34,7 +34,7 @@ export class AuthService {
       localStorage.setItem('token',this.token);
       this.http.post<User>('http://localhost:8080/users/login',httpOptions).subscribe(data =>{
        
-     localStorage.setItem('user',data.role);
+     localStorage.setItem('role',data.role);
       this.isLoggedIn = true;
       this.router.navigate(['movie']);
       });
@@ -46,6 +46,7 @@ export class AuthService {
       throw e;
     }
   }
+
   getToken(){
     return this.token;
   };
