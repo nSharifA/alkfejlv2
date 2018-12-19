@@ -20,10 +20,13 @@ public class Projection {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-	@JsonManagedReference
+	
+	@JsonBackReference
 	@OneToOne(mappedBy = "projection", cascade = CascadeType.ALL, 
             fetch = FetchType.LAZY)
 	private Reservation reservation;
+	
+	
 	public Integer getId() {
 		return id;
 	}

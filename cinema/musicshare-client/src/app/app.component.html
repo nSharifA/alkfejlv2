@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
   <button mat-button routerLink="/">
     <mat-icon>home</mat-icon>
-    MusicShare
+    Csoda Mozi
   </button>
-  <div >
+  <div *ngIf="authService.isLoggedIn">
     <button mat-button routerLink="/reservation">Foglalás</button>
     <!--button mat-button href="/playlists/add">Create playlist</button-->
     <button mat-button routerLink="/projection">Vetitések</button>

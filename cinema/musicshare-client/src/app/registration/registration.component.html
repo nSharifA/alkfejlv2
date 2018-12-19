@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <input matInput placeholder="Felhasználónév" type="username"  formControlName="username" required>
+        <mat-error *ngIf="username.invalid">Username is required</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input matInput placeholder="Jelszó" type="password" formControlName="password" required [type]="hidePassword ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="password.invalid">Password is required</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Név" type="name" formControlName="name" required>
+        <mat-error *ngIf="name.invalid">Username is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="E-mail" type="email" formControlName="email" required>
+        <mat-error *ngIf="email.invalid">Username is required</mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-flat-button type="submit" color="primary" [disabled]="form.invalid">Mentés</button>
+      </div>
+    
+</form>

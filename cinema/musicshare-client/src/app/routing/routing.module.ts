@@ -8,37 +8,46 @@ import { LoginComponent } from '../login/login.component';
 import { MovielistListComponent } from '../movie-list/movie-list.component';
 import { ReservationComponent } from '../reservation/reservation.component';
 import { ProjectionComponent } from '../projection/projection.component';
+import { RegistrationComponent } from '../registration/registration.component';
+import { AuthGuardService as AuthGuard} from '../services/AuthGuardService';
+import { RoleGuardService as RoleGuard } from '../services/roleGuardService';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/movie',
+    redirectTo: '/login',
     pathMatch: 'full',
   },
   {
     path:'movie',
     component:MovielistListComponent,
+    canActivate: [AuthGuard],
+    data:{
+      expectedRole:'ROLE_USER'
+    }
+  },
+  {
+    path: 'registration',
+    component: RegistrationComponent,
   },
   {
     path: 'reservation',
     component: ReservationComponent,
+    canActivate: [AuthGuard,RoleGuard],
+    data: { 
+      expectedRole: 'ROLE_ADMIN'
+    } 
   },
   {
     path: 'projection',
     component: ProjectionComponent,
-  },
-  {
-    path: 'playlist/:id/songs/new',
-    component: SongFormComponent,
-  },
-  {
-    path: 'playlist/:id',
-    component: SongListComponent,
+    canActivate: [AuthGuard,RoleGuard],
   },
   {
     path: 'login',
     component: LoginComponent,
   },
+  
 ];
 
 @NgModule({

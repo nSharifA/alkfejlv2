@@ -1,19 +1,29 @@
+ <ng-container>
+  <table mat-table id ="table">
+      <tr>
+          <th>Film neve</th>
+          <th>Főszereplő</th>
+          <th>rendező</th>
+        </tr>
+      <tr *ngFor="let movie of movies; let i = index" (click)="setSelected(i)" >
+          <td>{{ movie.name }}</td>
+        <td>{{ movie.mainActors }}</td>
+        <td>{{ movie.director }}</td>
+      </tr>
+  </table>
+  </ng-container>
 
-<div class="container">
-    <div class="row">
-      <div class="col">
-   
-          <h2 class="col-12">Lists</h2>
-         
-          <table id ="table">
-            <tr *ngFor="let movie of movies; let i = index" (click)="setSelected(i)" >
-                <td>{{ movie.id }}</td>
-                <td>{{ movie.name }}</td>
-              <td>{{ movie.mainActors }}</td>
-              <td>{{ movie.director }}</td>
-            </tr>
-          </table>
-     
-      </div>
-    </div>
-  </div>
+  <ng-container *ngIf="selected === true">
+  <table mat-table id="table2"  >
+      <tr>
+          <th>Film neve</th>
+          <th>Főszereplő</th>
+          <th>rendező</th>
+     </tr>
+     <tr>
+        <td>{{ selectedMovie.name }}</td>
+        <td>{{ selectedMovie.mainActors }}</td>
+        <td>{{ selectedMovie.director }}</td>
+      </tr>
+  </table>
+</ng-container >

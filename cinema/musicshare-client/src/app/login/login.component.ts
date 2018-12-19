@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
 
   async onSubmit() {
     try {
-      await this.authService.login(this.username.value, this.password.value);
-      if (this.authService.redirectUrl) {
-        this.router.navigate([this.authService.redirectUrl]);
+     this.authService.login(this.username.value, this.password.value);
+      if (this.authService.isLoggedIn) {
+        this.router.navigate(['movie']);
       } else {
         this.router.navigate(['/']);
       }

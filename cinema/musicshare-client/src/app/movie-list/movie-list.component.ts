@@ -5,6 +5,8 @@ import { Movie } from '../model/movie';
 import { CinemaService } from '../cinema.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { SelectionModel } from '@angular/cdk/collections';
+import { flatten } from '@angular/core/src/render3/util';
 
 @Component({
   selector: 'app-movie-list',
@@ -18,12 +20,14 @@ export class MovielistListComponent
   selectedID:number;
   private movies: Movie[];
   private selectedMovie:Movie;
+  selected:boolean;
 
   constructor(
     public cinemaService: CinemaService, private router: Router
   ) { }
 
   ngOnInit() {
+    this.selected=false;
     this.cinemaService.allMovies()
     .subscribe( data => {
       this.movies = data;
@@ -31,10 +35,11 @@ export class MovielistListComponent
   }
 
   setSelected(id:number){
+    this.selected=true;
     this.selectedID=id;
     this.cinemaService.getById(id+1) .subscribe( data => {
       this.selectedMovie = data;
-      console.log("kivalasztott film rendezoje: "+ this.selectedMovie.director);
+    
     });
    
   } 
