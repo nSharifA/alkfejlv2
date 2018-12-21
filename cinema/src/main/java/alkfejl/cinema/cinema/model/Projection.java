@@ -1,11 +1,9 @@
 package alkfejl.cinema.cinema.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.Date;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.springframework.lang.Nullable;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -21,12 +21,13 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Projection {
-	@Id
+public class Projection implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 	
-	@JsonBackReference
+	@JsonManagedReference
 	@OneToOne(mappedBy = "projection", cascade = CascadeType.ALL, 
             fetch = FetchType.LAZY)
 	private Reservation reservation;
@@ -35,10 +36,10 @@ public class Projection {
 	@OneToOne
 	@JoinColumn(name = "room")
 	private Room room;
-	
-	@JsonManagedReference
-	@OneToOne(mappedBy = "projection", cascade = CascadeType.ALL, 
-            fetch = FetchType.LAZY)
+	@Nullable
+	@OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            mappedBy = "projection")
 	private Movie movie;
 	
 	
@@ -75,12 +76,6 @@ public class Projection {
 	}
 	public void setRoom(Room room) {
 		this.room = room;
-	}
-	public Movie getMovie() {
-		return movie;
-	}
-	public void setMovie(Movie movie) {
-		this.movie = movie;
 	}
 	
 }

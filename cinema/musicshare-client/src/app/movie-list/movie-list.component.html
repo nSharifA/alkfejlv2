@@ -27,3 +27,7 @@
       </tr>
   </table>
 </ng-container >
+
+<ng-container *ngIf="isAdmin===false">
+    <app-movie ></app-movie>
+</ng-container>

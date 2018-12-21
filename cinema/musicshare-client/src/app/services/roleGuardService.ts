@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { 
   Router,
   CanActivate,
-  ActivatedRouteSnapshot
+  ActivatedRouteSnapshot,
+  CanActivateChild,
+  RouterStateSnapshot
 } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { User } from '../model/User';
 
 @Injectable()
-export class RoleGuardService implements CanActivate {
+export class RoleGuardService implements CanActivate,CanActivateChild {
    
   constructor(public auth: AuthService, public router: Router) {}
   canActivate(route: ActivatedRouteSnapshot): boolean {
@@ -21,9 +23,24 @@ export class RoleGuardService implements CanActivate {
     
       if (this.auth.isAuthenticated() && roles == expectedRole) {
         return true;
+      }else{
+        this.router.navigate(['/']);
       }
-      this.router.navigate(['login']);
+      //this.router.navigate(['login']);
+      
       return false;
      
+    }
+    canActivateChild(
+      route: ActivatedRouteSnapshot,
+      state: RouterStateSnapshot
+    ): boolean {
+      const expectedRole = route.data.expectedRole;
+      const roles = localStorage.getItem('role');
+      if (this.auth.isAuthenticated() && roles == expectedRole) {
+        return true;
+      }
+      //this.router.navigate(['login']);
+      return false;
     }
 }

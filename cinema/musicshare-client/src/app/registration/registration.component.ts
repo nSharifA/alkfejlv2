@@ -51,9 +51,7 @@ export class RegistrationComponent implements OnInit {
         this.authService.registrationLogin(data.role,this.form.controls['username'].value,this.form.controls['password'].value);
         
         
-      });
-     
-     
+      });  
   }
 
 }

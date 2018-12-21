@@ -1,7 +1,6 @@
 import { Projection } from "./projection";
 
-export class Movie {
-    id: number;
+export class MovieOutput {
     name:string;
     director: string;
     mainActors: string;

@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { PlaylistListComponent } from '../playlist-list/playlist-list.component';
-import { SongFormComponent } from '../song-form/song-form.component';
-import { SongListComponent } from '../song-list/song-list.component';
 import { LoginComponent } from '../login/login.component';
 import { MovielistListComponent } from '../movie-list/movie-list.component';
 import { ReservationComponent } from '../reservation/reservation.component';
@@ -11,6 +7,7 @@ import { ProjectionComponent } from '../projection/projection.component';
 import { RegistrationComponent } from '../registration/registration.component';
 import { AuthGuardService as AuthGuard} from '../services/AuthGuardService';
 import { RoleGuardService as RoleGuard } from '../services/roleGuardService';
+import { MovieComponent } from '../movie-list/movie/movie.component';
 
 const routes: Routes = [
   {
@@ -22,9 +19,16 @@ const routes: Routes = [
     path:'movie',
     component:MovielistListComponent,
     canActivate: [AuthGuard,RoleGuard],
+    children: [
+      {
+          path: '',
+          component:MovieComponent,
+          
+      }],
     data:{
       expectedRole:'ROLE_USER'
-    }
+    },
+    
   },
   {
     path: 'reservation',

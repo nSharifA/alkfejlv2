@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PlaylistService } from '../playlist.service';
-import { Playlist } from '../model/Playlist';
+
 import { Movie } from '../model/movie';
 import { CinemaService } from '../cinema.service';
 import { Observable } from 'rxjs';
@@ -21,7 +20,7 @@ export class MovielistListComponent
   private movies: Movie[];
   private selectedMovie:Movie;
   selected:boolean;
-
+  isAdmin:boolean = localStorage.getItem("role") == "ROLE_ADMIN"?true:false;
   constructor(
     public cinemaService: CinemaService, private router: Router
   ) { }
@@ -33,7 +32,9 @@ export class MovielistListComponent
       this.movies = data;
     });
   }
+  if(){
 
+  }
   setSelected(id:number){
     this.selected=true;
     this.selectedID=id;

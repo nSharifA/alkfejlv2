@@ -22,6 +22,8 @@ import { AuthGuardService } from './services/AuthGuardService';
 import { RoleGuardService } from './services/roleGuardService';
 import { RequestInterceptor } from './requestInterceptor';
 import { ProjectionService } from './services/ProjectionService';
+import { MovieComponent } from './movie-list/movie/movie.component';
+
 
 
 
@@ -32,7 +34,8 @@ import { ProjectionService } from './services/ProjectionService';
     ReservationComponent,
     ProjectionComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,

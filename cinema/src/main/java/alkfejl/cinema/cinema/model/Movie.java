@@ -1,34 +1,37 @@
 package alkfejl.cinema.cinema.model;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.springframework.lang.Nullable;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.Data;
-
-@Data
 @Entity
-public class Movie{
+public class Movie {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-	@Column(name = "name")
+	
 	private String name;
 	@Column(name = "director")
 	private String director;
 	@Column(name = "main_actors")
 	private String mainActors;
+	@Nullable
+	@OneToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "projection")
+	private Projection projection;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -53,14 +56,6 @@ public class Movie{
 	public void setMainActors(String mainActors) {
 		this.mainActors = mainActors;
 	}
-	public Projection getProjection() {
-		return projection;
-	}
-	public void setProjection(Projection projection) {
-		this.projection = projection;
-	}
-	@JsonBackReference
-	@OneToOne
-	@JoinColumn(name = "projection")
-	private Projection projection;
+	
+	
 }

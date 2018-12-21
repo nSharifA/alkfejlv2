@@ -11,5 +11,4 @@ insert into Projection(id,room,start,endt)values(1,1,TO_TIMESTAMP('2018-12-02 20
 insert into Projection(id,room,start,endt)values(2,2,TO_TIMESTAMP('2018-12-02 18:14:00.742000000', 'YYYY-MM-DD HH24:MI:SS'),TO_TIMESTAMP('2018-12-02 20:14:00.742000000', 'YYYY-MM-DD HH24:MI:SS'));
 insert into Reservation(id,projection)values(1,1);
 INSERT INTO CHAIR(id,reservation,room,row,cloumn)values(1,1,1,1,1);
-insert into movie(id,name,director,main_actors,projection)values(1,'A film','nagy rendezo','a foszereplo',1);
-insert into movie(id,name,director,main_actors,projection)values(2,'A nagy semmi film','kis rendezo','a nem foszereplo',2);
+insert into movie(id,name,director,main_actors,projection)values(1,'A film','nagy rendezo','a foszereplo',null);
