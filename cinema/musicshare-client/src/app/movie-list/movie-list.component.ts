@@ -32,9 +32,7 @@ export class MovielistListComponent
       this.movies = data;
     });
   }
-  if(){
-
-  }
+ 
   setSelected(id:number){
     this.selected=true;
     this.selectedID=id;
