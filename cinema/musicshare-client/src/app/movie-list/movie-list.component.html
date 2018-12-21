@@ -1,34 +1,39 @@
  <ng-container>
-  <table mat-table id ="table">
-      <tr>
-          <th>Film neve</th>
-          <th>Főszereplő</th>
-          <th>rendező</th>
-        </tr>
-      <tr *ngFor="let movie of movies; let i = index" (click)="setSelected(i)" >
-          <td>{{ movie.name }}</td>
-        <td>{{ movie.mainActors }}</td>
-        <td>{{ movie.director }}</td>
-      </tr>
-  </table>
-  <div *ngIf="isAdmin === false">
-    <button mat-flat-button  color="primary"  routerLink="/createMovie">Film felvétele</button>
-  </div>
-  </ng-container>
+    <div class="wrapper">
+        <label class="h2">
+        Filmek
+        </label>
+        <div class="line">
+            <label class="coll h3">
+            Film neve
+            </label>
+            <label class="coll h3">
+            Rendező
+            </label>
+            <label class="coll h3">
+            Főszereplő
+            </label>
+        </div>
+        <div class="line" *ngFor="let movie of movies; let i = index" (click)="setSelected(i)" >
+            <div class="coll">{{ movie.name }}</div>
+            <div class="coll">{{ movie.mainActors }}</div>
+            <div class="coll">{{ movie.director }}</div>
+        </div>
+        <button *ngIf="isAdmin === false" mat-flat-button  color="primary"  routerLink="/createMovie">Film felvétele</button>
+    </div>
+</ng-container>
 
-  <ng-container *ngIf="selected === true">
-  <table mat-table id="table2"  >
-      <tr>
-          <th>Film neve</th>
-          <th>Főszereplő</th>
-          <th>rendező</th>
-     </tr>
-     <tr>
+<ng-container *ngIf="selected === true">
+    <table mat-table id="table2"  >
+        <tr>
+            <th>Film neve</th>
+            <th>Főszereplő</th>
+            <th>rendező</th>
+        </tr>
+        <tr>
         <td>{{ selectedMovie.name }}</td>
         <td>{{ selectedMovie.mainActors }}</td>
         <td>{{ selectedMovie.director }}</td>
-      </tr>
-  </table>
+        </tr>
+    </table>
 </ng-container >
-
-
