@@ -29,45 +29,43 @@ public class MovieController {
 
 	@Autowired
 	private MovieRepository movierRepository;
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/{id}")
 	@Secured({ "ROLE_USER" })
 	@Transactional
-	public ResponseEntity<Movie> getByid ( @PathVariable Integer id ) {
+	public ResponseEntity<Movie> getByid(@PathVariable Integer id) {
 		return ResponseEntity.ok(movierRepository.findById(id).get());
 	}
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/all")
 	@Secured({ "ROLE_USER" })
 	@Transactional
-	public ResponseEntity<Iterable<Movie>> getAll () {
+	public ResponseEntity<Iterable<Movie>> getAll() {
 		return ResponseEntity.ok(movierRepository.findAll());
 	}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@DeleteMapping("/{id}")
+	@Secured({ "ROLE_USER" })
+	public void deleteMovie(@PathVariable Integer id) {
 
-	@DeleteMapping("")
-	@Secured({ "ROLE_ADMIN" })
-	public ResponseEntity<List<Movie>> deleteMovie( @PathVariable Integer id ) {
-
-		try {
-			movierRepository.deleteById(id);
-			return ResponseEntity.noContent().build();
-		} catch (Exception e) {
-			return ResponseEntity.notFound().build();
-		}
+		movierRepository.deleteById(id);
 
 	}
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/create")
 	@ResponseBody
 	@Secured({ "ROLE_USER" })
-	public ResponseEntity<Movie> createMovie ( @RequestBody Movie movie ) {
+	public ResponseEntity<Movie> createMovie(@RequestBody Movie movie) {
 
 		return ResponseEntity.ok(movierRepository.save(movie));
 	}
+
 	@PutMapping("")
 	@Secured({ "ROLE_ADMIN" })
-	public ResponseEntity<Movie> updateMovie ( @RequestBody Movie movie ) {
+	public ResponseEntity<Movie> updateMovie(@RequestBody Movie movie) {
 
 		return ResponseEntity.ok(movierRepository.save(movie));
 	}
