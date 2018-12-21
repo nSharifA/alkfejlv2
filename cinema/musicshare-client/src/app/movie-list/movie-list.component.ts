@@ -52,4 +52,7 @@ export class MovielistListComponent
       this.formRefres();
     });
   }
+  closePopup(){
+    this.selected=false;
+  }
 }

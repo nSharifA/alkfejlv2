@@ -1,4 +1,3 @@
-
  <ng-container>
     <div class="wrapper">
         <label class="h2">
@@ -15,30 +14,29 @@
             Főszereplő
             </label>
         </div>
-        <div class="line" *ngFor="let movie of movies; let i = index" (click)="setSelected(i)" >
+        <div class="line" *ngFor="let movie of movies; let i = index">
             <div class="coll">{{ movie.name }}</div>
             <div class="coll">{{ movie.mainActors }}</div>
             <div class="coll">{{ movie.director }}</div>
+            <button class="delete" (click)="setSelected(i)" >Törlés</button>
         </div>
         <button *ngIf="isAdmin === false" mat-flat-button  color="primary"  routerLink="/createMovie">Film felvétele</button>
     </div>
 </ng-container>
 
 <ng-container *ngIf="selected === true">
-    <table mat-table id="table2"  >
-        <tr>
-            <th>Film neve</th>
-            <th>Főszereplő</th>
-            <th>rendező</th>
-        </tr>
-        <tr>
-        <td>{{ selectedMovie.name }}</td>
-        <td>{{ selectedMovie.mainActors }}</td>
-        <td>{{ selectedMovie.director }}</td>
-        </tr>
-      <div>
-        <button mat-flat-button  color="primary" (click)="deleteMovie()" >Film törlése</button>
-      </div>
-    </table>
+    <div class="popup">
+        <label class="h3">Biztosan törölni akarod az alábbi filmet?</label>
+        <label>Film neve</label>
+        <label>Főszereplő</label>
+        <label>rendező</label>
+        <label>{{ selectedMovie.name }}</label>
+        <label>{{ selectedMovie.mainActors }}</label>
+        <label>{{ selectedMovie.director }}</label>
+        <div class="buttWrapper">
+            <button mat-flat-button  color="primary" (click)="deleteMovie()" >Igen</button>
+            <button mat-flat-button  color="primary" (click)="closePopup()" >Nem</button>
+        </div>
+    </div>
 </ng-container >
 
