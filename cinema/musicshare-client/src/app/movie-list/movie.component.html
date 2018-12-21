@@ -1,0 +1,22 @@
+<form [formGroup]="form" class="form-group" id ="form"(ngSubmit)="onSubmit()">
+  <div class="wrapper">
+    <mat-form-field>
+      <input matInput placeholder="Film neve" formControlName="MovieName" required>
+      <mat-error *ngIf="MovieName.invalid">A film nevét szükséges megadni.</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Rendező" formControlName="director" required >
+     <mat-error *ngIf="director.invalid">Rendező megadása kötelező</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Főszereplő" formControlName="mainActors" required >
+        <mat-error *ngIf="mainActors.invalid">Főszereplő megadása kötelező</mat-error>
+      </mat-form-field>
+    <br>
+    <div>
+      <button mat-flat-button type="submit" color="primary" [disabled]="form.invalid" >Film mentése</button>
+    </div>
+  
+  </div> 
+</form>
