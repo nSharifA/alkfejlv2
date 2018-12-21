@@ -3,23 +3,24 @@
   <div *ngIf="message">
     {{ message }}
   </div>
-
-  <mat-form-field>
-    <input matInput placeholder="Username" formControlName="username" required>
-    <mat-error *ngIf="username.invalid">Username is required</mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput placeholder="Password" formControlName="password" required [type]="hidePassword ? 'password' : 'text'">
-    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-    <mat-error *ngIf="password.invalid">Password is required</mat-error>
-  </mat-form-field>
-
-  <div>
-    <button mat-flat-button type="submit" color="primary" [disabled]="form.invalid">Belépés</button>
-  </div>
-
-  <div>
-    <button routerLink="/registration" mat-flat-button  color="primary" >Regisztarcio</button>
-  </div>
+ <div class="wrapper">
+   <mat-form-field>
+     <input matInput placeholder="Username" formControlName="username" required>
+     <mat-error *ngIf="username.invalid">Username is required</mat-error>
+   </mat-form-field>
+ 
+   <mat-form-field>
+     <input matInput placeholder="Password" formControlName="password" required [type]="hidePassword ? 'password' : 'text'">
+     <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+     <mat-error *ngIf="password.invalid">Password is required</mat-error>
+   </mat-form-field>
+ 
+   <div>
+     <button mat-flat-button type="submit" color="primary" [disabled]="form.invalid">Belépés</button>
+   </div>
+ 
+   <div>
+     <button routerLink="/registration" mat-flat-button  color="primary" >Regisztarcio</button>
+   </div>
+ </div>
 </form>
