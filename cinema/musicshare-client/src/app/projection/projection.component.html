@@ -1,22 +1,23 @@
 
 <ng-container>
-    <table mat-table id ="table">
-        <tr>
-            <th>Film neve</th>
-            <th>Főszereplő</th>
-            <th>Rendező</th>
-            <th>Film kezdete</th>
-            <th>Film vége</th>
-          </tr>
-        <tr *ngFor="let pro of projections; let i = index" (click)="setSelected(i)" >
-            <td>{{ pro.movie.name }}</td>
-          <td>{{ pro.movie.mainActors }}</td>
-          <td>{{ pro.movie.director }}</td>
-          <td>{{ pro.start  | date: 'EEEE, MMMM d, y, h:mm:ss a'}}</td>
-          <td>{{ pro.endt |  date: 'EEEE, MMMM d, y, h:mm:ss a'}}</td>
-        </tr>
-    </table>
-    </ng-container>
+  <div class="wrapper">
+      <div class="line">
+          <label class="coll">Film neve</label>
+          <label class="coll">Főszereplő</label>
+          <label class="coll">Rendező</label>
+          <label class="coll">Film kezdete</label>
+          <label class="coll">Film vége</label>
+      </div>
+      <div class="line" *ngFor="let pro of projections; let i = index" (click)="setSelected(i)" >
+        <label class="coll">{{ pro.movie.name }}</label>
+        <label class="coll">{{ pro.movie.mainActors }}</label>
+        <label class="coll">{{ pro.movie.director }}</label>
+        <label class="coll">{{ pro.start  | date: 'EEEE, MMMM d, y, h:mm:ss a'}}</label>
+        <label class="coll">{{ pro.endt |  date: 'EEEE, MMMM d, y, h:mm:ss a'}}</label>
+      </div>
+  </div>
+</ng-container>
+
   
     <ng-container *ngIf="selected === true">
     <table mat-table id="table2"  >
