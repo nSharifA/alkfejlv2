@@ -13,7 +13,7 @@ import { ProjectionService } from '../services/ProjectionService';
   styleUrls: ['./projection.component.css']
 })
 export class ProjectionComponent
-  implements OnInit, OnDestroy {
+  implements OnInit {
 
  
   selectedID:number;
@@ -41,11 +41,6 @@ export class ProjectionComponent
     
     });
   }
-  ngOnDestroy() {
-  }
-
-  filter(filterText: string) {
- 
-  }
+  
 
 }

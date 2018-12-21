@@ -62,9 +62,9 @@ public class MovieController {
 
 		return ResponseEntity.ok(movierRepository.save(movie));
 	}
-
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("")
-	@Secured({ "ROLE_ADMIN" })
+	@Secured({ "ROLE_USER" })
 	public ResponseEntity<Movie> updateMovie(@RequestBody Movie movie) {
 
 		return ResponseEntity.ok(movierRepository.save(movie));

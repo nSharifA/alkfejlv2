@@ -30,6 +30,9 @@ export class CinemaService {
       public createMovie(movie:MovieOutput):Observable<Movie>{
         return this.httpClient.post<Movie>('http://localhost:8080/movie/create', movie);
       }
+      public updateMovie(movie:Movie):Observable<Movie>{
+        return this.httpClient.put<Movie>('http://localhost:8080/movie', movie);
+      }
       public deleteMovie(id:number): Observable<{}>{
         return this.httpClient.delete('http://localhost:8080/movie/'+ id);
       }

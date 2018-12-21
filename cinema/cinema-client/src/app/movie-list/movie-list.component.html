@@ -19,11 +19,35 @@
             <div class="coll">{{ movie.mainActors }}</div>
             <div class="coll">{{ movie.director }}</div>
             <button class="delete" (click)="setSelected(i)" >Törlés</button>
+            <button class="delete" (click)="updates(i)" >Módositás</button>
         </div>
+       
         <button *ngIf="isAdmin === false" mat-flat-button  color="primary"  routerLink="/createMovie">Film felvétele</button>
     </div>
 </ng-container>
-
+<ng-container *ngIf="updateMark">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="wrapper">
+          <mat-form-field>
+              <input matInput placeholder="Felhasználónév"   formControlName="movieName" required>
+              <mat-error *ngIf="movieName.invalid">Username is required</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <input matInput placeholder="Fő szereplő"  formControlName="mainActors" >
+               <mat-error *ngIf="mainActors.invalid">Password is required</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <input matInput placeholder="Rendező"  formControlName="director" required>
+              <mat-error *ngIf="director.invalid">Username is required</mat-error>
+            </mat-form-field>
+            <div>
+              <button mat-flat-button type="submit" color="primary" [disabled]="form.invalid">Módosítás</button>
+            </div>
+          </div>
+      </form>
+</ng-container>
 <ng-container *ngIf="selected === true">
     <div class="popup">
         <label class="h3">Biztosan törölni akarod az alábbi filmet?</label>

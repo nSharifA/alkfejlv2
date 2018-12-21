@@ -23,7 +23,7 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 	
-	@JsonManagedReference
+	@JsonBackReference
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "projection")
 	private Projection projection;
