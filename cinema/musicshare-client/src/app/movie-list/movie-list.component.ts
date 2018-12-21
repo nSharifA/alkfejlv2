@@ -27,20 +27,29 @@ export class MovielistListComponent
 
   ngOnInit() {
     this.selected=false;
+    this.formRefres();
+  }
+  formRefres(){
     this.cinemaService.allMovies()
     .subscribe( data => {
       this.movies = data;
     });
   }
- 
+
   setSelected(id:number){
     this.selected=true;
-    this.selectedID=id;
-    this.cinemaService.getById(id+1) .subscribe( data => {
+    this.selectedID=this.movies[id].id;
+    this.cinemaService.getById(this.selectedID) .subscribe( data => {
       this.selectedMovie = data;
     
     });
    
   } 
-
+  deleteMovie(){
+    this.cinemaService.deleteMovie(this.selectedMovie.id).subscribe(data=>{
+      alert("Sikeresen törölte a filmet");
+      this.selected=false;
+      this.formRefres();
+    });
+  }
 }
