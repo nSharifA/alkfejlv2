@@ -11,6 +11,9 @@
         <td>{{ movie.director }}</td>
       </tr>
   </table>
+  <div *ngIf="isAdmin === false">
+    <button mat-flat-button  color="primary"  routerLink="/createMovie">Film felvétele</button>
+  </div>
   </ng-container>
 
   <ng-container *ngIf="selected === true">
@@ -28,6 +31,4 @@
   </table>
 </ng-container >
 
-<ng-container *ngIf="isAdmin===false">
-    <app-movie ></app-movie>
-</ng-container>
+

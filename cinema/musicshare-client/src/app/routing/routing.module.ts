@@ -19,16 +19,18 @@ const routes: Routes = [
     path:'movie',
     component:MovielistListComponent,
     canActivate: [AuthGuard,RoleGuard],
-    children: [
-      {
-          path: '',
-          component:MovieComponent,
-          
-      }],
     data:{
       expectedRole:'ROLE_USER'
-    },
+    }
     
+  },
+  {
+    path:'createMovie',
+    component:MovieComponent,
+    canActivate: [AuthGuard,RoleGuard],
+    data:{
+      expectedRole:'ROLE_USER'
+    }
   },
   {
     path: 'reservation',
